@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Engine {
+    public static void start(){
+        ProductDB productDB = new ProductDB();
+        UserDB userDB = new UserDB();
+        boolean isWorking= Authenticator.authenticate(userDB);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println();
+
+        while(isWorking){
+            GUI.showMenu();
+            switch(scanner.nextLine()){
+                case "1":
+                    GUI.listProducts(productDB.getProducts());
+                    break;
+                case "2":
+                    GUI.buyProduct(productDB);
+                    break;
+                case "4":
+                    isWorking=false;
+                    break;
+                case "3":
+                    if(Authenticator.loggedUser.getRole()== User.Role.ADMIN){
+                        GUI.addProductAmount(productDB);
+                        break;
+                    }
+                default:
+                    System.out.println("Zły numer!");
+                    break;
+            }
+        }
+    }
+}
