@@ -1,4 +1,7 @@
+package pl.camp.it.sklep.model;
+
 import org.apache.commons.codec.digest.DigestUtils;
+import pl.camp.it.sklep.Authenticator;
 
 public class User {
     private String login;

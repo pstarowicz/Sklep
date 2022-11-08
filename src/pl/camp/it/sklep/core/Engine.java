@@ -1,3 +1,11 @@
+package pl.camp.it.sklep.core;
+
+import pl.camp.it.sklep.*;
+import pl.camp.it.sklep.GUI.GUI;
+import pl.camp.it.sklep.database.ProductDB;
+import pl.camp.it.sklep.database.UserDB;
+import pl.camp.it.sklep.model.User;
+
 import java.util.Scanner;
 
 public class Engine {

@@ -1,3 +1,10 @@
+package pl.camp.it.sklep.GUI;
+
+import pl.camp.it.sklep.Authenticator;
+import pl.camp.it.sklep.model.Product;
+import pl.camp.it.sklep.model.User;
+import pl.camp.it.sklep.database.ProductDB;
+
 import java.util.Scanner;
 
 public class GUI {

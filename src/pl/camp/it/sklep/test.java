@@ -1,3 +1,5 @@
+package pl.camp.it.sklep;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class test {

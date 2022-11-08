@@ -1,3 +1,7 @@
+package pl.camp.it.sklep.database;
+
+import pl.camp.it.sklep.model.Product;
+
 public class ProductDB {
     private Product[] products = new Product[4];
 

@@ -1,3 +1,5 @@
+package pl.camp.it.sklep.model;
+
 public class Product {
     private String name;
     private double price;

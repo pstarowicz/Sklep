@@ -1,3 +1,6 @@
+package pl.camp.it.sklep.database;
+
+import pl.camp.it.sklep.model.User;
 
 public class UserDB {
     private User[] users = new User[2];
