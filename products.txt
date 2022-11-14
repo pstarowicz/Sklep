@@ -1,4 +1,0 @@
-komputer;4999.99;10
-monitor;999.99;8
-mysz;59.99;20
-klawiatura;149.99;15
