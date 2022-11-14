@@ -28,8 +28,6 @@ public class Engine {
                     break;
                 case "4":
                     isWorking=false;
-                    userDB.persistToFile();
-                    productDB.persistToFile();
                     DBManager.persistToFile(productDB,userDB);
                     break;
                 case "3":
