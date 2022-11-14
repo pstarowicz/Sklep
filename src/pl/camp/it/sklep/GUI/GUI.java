@@ -5,6 +5,7 @@ import pl.camp.it.sklep.model.Product;
 import pl.camp.it.sklep.model.User;
 import pl.camp.it.sklep.database.ProductDB;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GUI {
@@ -19,7 +20,7 @@ public class GUI {
         System.out.println("4. Wyjście");
     }
 
-    public static void listProducts(Product[] products){
+    public static void listProducts(List<Product> products){
         for(Product currentProduct:products){
             if(currentProduct.getAmount()!=0) {
                 System.out.println(currentProduct);

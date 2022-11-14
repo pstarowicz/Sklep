@@ -27,6 +27,8 @@ public class Engine {
                     break;
                 case "4":
                     isWorking=false;
+                    userDB.persistToFile();
+                    productDB.persistToFile();
                     break;
                 case "3":
                     if(Authenticator.loggedUser.getRole()== User.Role.ADMIN){

@@ -11,6 +11,10 @@ public class Product {
         this.amount = amount;
     }
 
+    public Product(String[] params) {
+        this(params[0],Double.parseDouble(params[1]),Integer.parseInt(params[2]));
+    }
+
     public Product() {
     }
 
@@ -21,6 +25,16 @@ public class Product {
                 .append(" -- cena[zł]: ")
                 .append(this.price)
                 .append(" -- ilość: ")
+                .append(this.amount)
+                .toString();
+    }
+
+    public String convertToData(){
+        return new StringBuilder()
+                .append(this.name)
+                .append(";")
+                .append(this.price)
+                .append(";")
                 .append(this.amount)
                 .toString();
     }

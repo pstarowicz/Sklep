@@ -18,6 +18,31 @@ public class User {
         this.password = password;
     }
 
+    public enum Role{
+        ADMIN,
+        USER
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof User)){
+            return false;
+        }
+        User temp = (User) obj;
+        return this.login.equals(temp.login) &&
+                this.password.equals(DigestUtils.md5Hex(temp.password+ Authenticator.seed));
+    }
+
+    public String convertToData(){
+        return new StringBuilder()
+                .append(this.login)
+                .append(";")
+                .append(this.password)
+                .append(";")
+                .append(this.role)
+                .toString();
+    }
+
     public String getLogin() {
         return login;
     }
@@ -42,18 +67,4 @@ public class User {
         this.role = role;
     }
 
-    public enum Role{
-        ADMIN,
-        USER
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if(!(obj instanceof User)){
-            return false;
-        }
-        User temp = (User) obj;
-        return this.login.equals(temp.login) &&
-                this.password.equals(DigestUtils.md5Hex(temp.password+ Authenticator.seed));
-    }
 }

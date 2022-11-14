@@ -2,14 +2,26 @@ package pl.camp.it.sklep.database;
 
 import pl.camp.it.sklep.model.Product;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductDB {
-    private Product[] products = new Product[4];
+    private final List<Product> products = new ArrayList<>();
+    private final String PRODUCT_DB_FILE = "products.txt";
 
     public ProductDB() {
-        this.products[0]= new Product("komputer",4999.99,10);
-        this.products[1]= new Product("monitor",999.99,8);
-        this.products[2]= new Product("mysz",59.99,20);
-        this.products[3]= new Product("klawiatura",149.99,15);
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(PRODUCT_DB_FILE));
+            String line;
+            while((line = reader.readLine()) != null) {
+                String[] productData = line.split(";");
+                this.products.add(new Product(productData));
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("plik nie dziala !!");
+        }
     }
 
     public Product returnProduct(String name){
@@ -19,11 +31,25 @@ public class ProductDB {
         return null;
     }
 
-    public Product[] getProducts() {
+    public void persistToFile() {
+        try {
+            BufferedWriter writer =
+                    new BufferedWriter(new FileWriter(this.PRODUCT_DB_FILE));
+            writer.write(this.products.get(0).convertToData());
+            for(int i = 1; i < this.products.size(); i++) {
+                writer.newLine();
+                writer.write(this.products.get(i).convertToData());
+                //writer.flush();
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Błąd podczas zapisu");
+            e.printStackTrace();
+        }
+    }
+
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Product[] products) {
-        this.products = products;
-    }
 }
