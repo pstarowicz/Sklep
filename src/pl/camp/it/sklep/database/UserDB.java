@@ -11,7 +11,7 @@ public class UserDB {
     private final String USER_DB_FILE = "users.txt";
 
     public UserDB() {
-        try {
+        /*try {
             BufferedReader reader = new BufferedReader(new FileReader(USER_DB_FILE));
             String line;
             while((line = reader.readLine()) != null) {
@@ -22,7 +22,7 @@ public class UserDB {
             reader.close();
         } catch (IOException e) {
             System.out.println("plik nie dziala !!");
-        }
+        }*/
     }
 
     public User findUserByLogin(String login){
@@ -46,5 +46,9 @@ public class UserDB {
             System.out.println("Błąd podczas zapisu");
             e.printStackTrace();
         }
+    }
+
+    public Map<String, User> getUsers() {
+        return users;
     }
 }

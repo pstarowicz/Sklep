@@ -12,6 +12,7 @@ public class Engine {
     public static void start(){
         ProductDB productDB = new ProductDB();
         UserDB userDB = new UserDB();
+        DBManager.getFromFile(productDB,userDB);
         boolean isWorking= Authenticator.authenticate(userDB);
         Scanner scanner = new Scanner(System.in);
         System.out.println();
@@ -29,6 +30,7 @@ public class Engine {
                     isWorking=false;
                     userDB.persistToFile();
                     productDB.persistToFile();
+                    DBManager.persistToFile(productDB,userDB);
                     break;
                 case "3":
                     if(Authenticator.loggedUser.getRole()== User.Role.ADMIN){

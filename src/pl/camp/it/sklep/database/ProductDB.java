@@ -11,7 +11,7 @@ public class ProductDB {
     private final String PRODUCT_DB_FILE = "products.txt";
 
     public ProductDB() {
-        try {
+        /*try {
             BufferedReader reader = new BufferedReader(new FileReader(PRODUCT_DB_FILE));
             String line;
             while((line = reader.readLine()) != null) {
@@ -21,7 +21,7 @@ public class ProductDB {
             reader.close();
         } catch (IOException e) {
             System.out.println("plik nie dziala !!");
-        }
+        }*/
     }
 
     public Product returnProduct(String name){
