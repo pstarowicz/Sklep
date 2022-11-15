@@ -8,7 +8,6 @@ import java.util.List;
 
 public class ProductDB {
     private final List<Product> products = new ArrayList<>();
-    private final String PRODUCT_DB_FILE = "products.txt";
 
     public ProductDB() {
 

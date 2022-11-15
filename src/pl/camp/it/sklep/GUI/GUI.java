@@ -1,6 +1,7 @@
 package pl.camp.it.sklep.GUI;
 
 import pl.camp.it.sklep.Authenticator;
+import pl.camp.it.sklep.database.UserDB;
 import pl.camp.it.sklep.model.Product;
 import pl.camp.it.sklep.model.User;
 import pl.camp.it.sklep.database.ProductDB;
@@ -16,8 +17,9 @@ public class GUI {
         if (Authenticator.loggedUser.getRole() == User.Role.ADMIN) {
 
             System.out.println("3. Uzupełnij produkt");
+            System.out.println("4. Dodaj admina");
         }
-        System.out.println("4. Wyjście");
+        System.out.println("5. Wyjście");
     }
 
     public static void listProducts(List<Product> products){
@@ -70,9 +72,28 @@ public class GUI {
 
     public static User readLogAndPass(){
         Scanner scanner = new Scanner(System.in);
+        System.out.println(">>Logowanie<<");
         System.out.println("Login:");
         String login = scanner.nextLine();
         System.out.println("Hasło:");
         return new User(login,scanner.nextLine());
+    }
+
+    public static void changeUserToAdmin(UserDB userDB){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj login użytkownika, aby nadać mu prawa admina:");
+        User user=userDB.findUserByLogin(scanner.nextLine());
+        if(user!=null){
+            if(user.getRole()==User.Role.ADMIN){
+                System.out.println("Podany użytkownik już jest adminem");
+            }
+            else{
+                user.setRole(User.Role.ADMIN);
+                System.out.println("Użytkownik otrzymał rolę admina");
+            }
+        }
+        else{
+            System.out.println("Brak użytkownika o podanym loginie!");
+        }
     }
 }

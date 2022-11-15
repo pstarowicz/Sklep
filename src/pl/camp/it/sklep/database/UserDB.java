@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class UserDB {
     private final Map<String,User> users = new HashMap<>();
-    private final String USER_DB_FILE = "users.txt";
 
     public UserDB() {
 

@@ -14,9 +14,11 @@ public class Authenticator {
             User userFromDB = userDB.findUserByLogin(user.getLogin());
             if(userFromDB != null && userFromDB.equals(user)){
                 Authenticator.loggedUser = userFromDB;
+                System.out.println("Zalogowano pomyślnie");
                 return true;
             }
         }
+        System.out.println("Błąd logowania");
         return false;
     }
 }
