@@ -39,7 +39,6 @@ public class Engine {
             }
         }
 
-
         System.out.println();
 
         while(isWorking){
